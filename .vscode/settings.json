@@ -1,0 +1,6 @@
+{
+  "deno.enable": true,
+  "editor.inlayHints.enabled": "on",
+  "deno.codeLens.implementations": false,
+  "deno.codeLens.references": false
+}

@@ -1,0 +1,101 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "jsr:@hono/hono@^4.5.9": "jsr:@hono/hono@4.5.9",
+      "jsr:@std/assert@1.0.3": "jsr:@std/assert@1.0.3",
+      "jsr:@std/internal@^1.0.2": "jsr:@std/internal@1.0.2",
+      "npm:@types/node": "npm:@types/node@18.16.19",
+      "npm:create-hono@latest": "npm:create-hono@0.12.0",
+      "npm:prisma@latest": "npm:prisma@5.19.0"
+    },
+    "jsr": {
+      "@hono/hono@4.5.9": {
+        "integrity": "47f561e67aedbd6d1e21e3a1ae26c1b80ffdb62a51c161d502e75bee17ca40af"
+      },
+      "@std/assert@1.0.3": {
+        "integrity": "b0d03ce1ced880df67132eea140623010d415848df66f6aa5df76507ca7c26d8",
+        "dependencies": [
+          "jsr:@std/internal@^1.0.2"
+        ]
+      },
+      "@std/internal@1.0.2": {
+        "integrity": "f4cabe2021352e8bfc24e6569700df87bf070914fc38d4b23eddd20108ac4495"
+      }
+    },
+    "npm": {
+      "@prisma/debug@5.19.0": {
+        "integrity": "sha512-+b/G0ubAZlrS+JSiDhXnYV5DF/aTJ3pinktkiV/L4TtLRLZO6SVGyFELgxBsicCTWJ2ZMu5vEV/jTtYCdjFTRA==",
+        "dependencies": {}
+      },
+      "@prisma/engines-version@5.19.0-31.5fe21811a6ba0b952a3bc71400666511fe3b902f": {
+        "integrity": "sha512-GimI9aZIFy/yvvR11KfXRn3pliFn1QAkdebVlsXlnoh5uk0YhLblVmeYiHfsu+wDA7BeKqYT4sFfzg8mutzuWw==",
+        "dependencies": {}
+      },
+      "@prisma/engines@5.19.0": {
+        "integrity": "sha512-UtW+0m4HYoRSSR3LoDGKF3Ud4BSMWYlLEt4slTnuP1mI+vrV3zaDoiAPmejdAT76vCN5UqnWURbkXxf66nSylQ==",
+        "dependencies": {
+          "@prisma/debug": "@prisma/debug@5.19.0",
+          "@prisma/engines-version": "@prisma/engines-version@5.19.0-31.5fe21811a6ba0b952a3bc71400666511fe3b902f",
+          "@prisma/fetch-engine": "@prisma/fetch-engine@5.19.0",
+          "@prisma/get-platform": "@prisma/get-platform@5.19.0"
+        }
+      },
+      "@prisma/fetch-engine@5.19.0": {
+        "integrity": "sha512-oOiPNtmJX0cP/ebu7BBEouJvCw8T84/MFD/Hf2zlqjxkK4ojl38bB9i9J5LAxotL6WlYVThKdxc7HqoWnPOhqQ==",
+        "dependencies": {
+          "@prisma/debug": "@prisma/debug@5.19.0",
+          "@prisma/engines-version": "@prisma/engines-version@5.19.0-31.5fe21811a6ba0b952a3bc71400666511fe3b902f",
+          "@prisma/get-platform": "@prisma/get-platform@5.19.0"
+        }
+      },
+      "@prisma/get-platform@5.19.0": {
+        "integrity": "sha512-s9DWkZKnuP4Y8uy6yZfvqQ/9X3/+2KYf3IZUVZz5OstJdGBJrBlbmIuMl81917wp5TuK/1k2TpHNCEdpYLPKmg==",
+        "dependencies": {
+          "@prisma/debug": "@prisma/debug@5.19.0"
+        }
+      },
+      "@types/node@18.16.19": {
+        "integrity": "sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==",
+        "dependencies": {}
+      },
+      "create-hono@0.12.0": {
+        "integrity": "sha512-/H+quXE5ygrA52EqsifTCvk3DVdEBg2bX/3OJDQrjBjopqTzNt9kCqq8LR41FFXl96NMBc7P5NqLJBi/M3hzTw==",
+        "dependencies": {}
+      },
+      "fsevents@2.3.3": {
+        "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==",
+        "dependencies": {}
+      },
+      "prisma@5.19.0": {
+        "integrity": "sha512-Pu7lUKpVyTx8cVwM26dYh8NdvMOkMnJXzE8L6cikFuR4JwyMU5NKofQkWyxJKlTT4fNjmcnibTvklV8oVMrn+g==",
+        "dependencies": {
+          "@prisma/engines": "@prisma/engines@5.19.0",
+          "fsevents": "fsevents@2.3.3"
+        }
+      }
+    }
+  },
+  "remote": {
+    "https://deno.land/x/zod@v3.23.8/ZodError.ts": "528da200fbe995157b9ae91498b103c4ef482217a5c086249507ac850bd78f52",
+    "https://deno.land/x/zod@v3.23.8/errors.ts": "5285922d2be9700cc0c70c95e4858952b07ae193aa0224be3cbd5cd5567eabef",
+    "https://deno.land/x/zod@v3.23.8/external.ts": "a6cfbd61e9e097d5f42f8a7ed6f92f93f51ff927d29c9fbaec04f03cbce130fe",
+    "https://deno.land/x/zod@v3.23.8/helpers/enumUtil.ts": "54efc393cc9860e687d8b81ff52e980def00fa67377ad0bf8b3104f8a5bf698c",
+    "https://deno.land/x/zod@v3.23.8/helpers/errorUtil.ts": "7a77328240be7b847af6de9189963bd9f79cab32bbc61502a9db4fe6683e2ea7",
+    "https://deno.land/x/zod@v3.23.8/helpers/parseUtil.ts": "c14814d167cc286972b6e094df88d7d982572a08424b7cd50f862036b6fcaa77",
+    "https://deno.land/x/zod@v3.23.8/helpers/partialUtil.ts": "998c2fe79795257d4d1cf10361e74492f3b7d852f61057c7c08ac0a46488b7e7",
+    "https://deno.land/x/zod@v3.23.8/helpers/typeAliases.ts": "0fda31a063c6736fc3cf9090dd94865c811dfff4f3cb8707b932bf937c6f2c3e",
+    "https://deno.land/x/zod@v3.23.8/helpers/util.ts": "30c273131661ca5dc973f2cfb196fa23caf3a43e224cdde7a683b72e101a31fc",
+    "https://deno.land/x/zod@v3.23.8/index.ts": "d27aabd973613985574bc31f39e45cb5d856aa122ef094a9f38a463b8ef1a268",
+    "https://deno.land/x/zod@v3.23.8/locales/en.ts": "a7a25cd23563ccb5e0eed214d9b31846305ddbcdb9c5c8f508b108943366ab4c",
+    "https://deno.land/x/zod@v3.23.8/mod.ts": "ec6e2b1255c1a350b80188f97bd0a6bac45801bb46fc48f50b9763aa66046039",
+    "https://deno.land/x/zod@v3.23.8/types.ts": "1b172c90782b1eaa837100ebb6abd726d79d6c1ec336350c8e851e0fd706bf5c"
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@hono/hono@^4.5.9",
+      "jsr:@std/assert@1.0.3",
+      "npm:@prisma/client@5.19.0"
+    ]
+  }
+}
