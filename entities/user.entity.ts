@@ -4,5 +4,4 @@ export interface UserEntity {
   identifier: string;
   email: string;
   password: string;
-  isBlocked: boolean;
 }

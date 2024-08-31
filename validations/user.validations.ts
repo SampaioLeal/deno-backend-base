@@ -7,5 +7,4 @@ export const UserSchema = z.object({
   email: z.string().email(),
   identifier: z.string().min(1),
   password: z.string().min(8),
-  isBlocked: z.boolean(),
 }) satisfies z.ZodType<UserEntity>;

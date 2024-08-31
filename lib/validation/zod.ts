@@ -1,5 +1,10 @@
 import { z } from "zod";
+import { HttpError } from "../../http/error.ts";
 
 export function validateZodSchema(body: object, schema: z.ZodSchema) {
-  return schema.parse(body);
+  try {
+    return schema.parse(body);
+  } catch (_error) {
+    throw new HttpError("Bad Request", 400);
+  }
 }
