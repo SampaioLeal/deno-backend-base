@@ -1,12 +1,14 @@
-import { UserEntity } from "@src/1-entities/user.entity.ts";
-import { spy } from "@std/testing/mock";
+import { UserEntity } from "../../1-entities/user.entity.ts";
 
 function create(data: UserEntity) {
-  return data;
+  const result = { ...data, id: "uuid", password: undefined };
+  delete result.password;
+
+  return result as Omit<UserEntity, "password">;
 }
 
-export const GenericRepositorySpy = {
-  create: spy(create),
+export const GenericTestRepository = {
+  create,
 };
 
-export type GenericRepositorySpy = typeof GenericRepositorySpy;
+export type GenericTestRepository = typeof GenericTestRepository;

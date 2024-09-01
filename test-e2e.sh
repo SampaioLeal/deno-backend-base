@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker-compose -f compose-e2e.yaml up \
+docker compose -f compose-e2e.yaml up \
   --build \
   --renew-anon-volumes \
   --force-recreate \

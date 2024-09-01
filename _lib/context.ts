@@ -14,6 +14,10 @@ export class Context {
   get(identifier: string) {
     const value = this.bindings.get(identifier);
 
+    if (value === undefined || value === null) {
+      throw new Error(`Identifier ${identifier} not bound`);
+    }
+
     try {
       const constructor = value as ClassConstructor;
       const instantiatedClass = new constructor();
