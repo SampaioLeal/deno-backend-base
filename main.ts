@@ -1,4 +1,4 @@
-import { context } from "@src/context.ts";
+import { context } from "./utils/context.ts";
 import { initializeMainContext } from "@src/contexts/main.context.ts";
 import { initializeHTTPServer } from "@src/5-http/server.ts";
 

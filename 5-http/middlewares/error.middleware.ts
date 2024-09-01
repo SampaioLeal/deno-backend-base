@@ -3,6 +3,8 @@ import { HttpError } from "@dest/http/errors.ts";
 import { Context } from "hono";
 import postgres from "postgres";
 
+// TODO: unit test
+
 export function errorMiddleware(error: Error, _ctx: Context) {
   if (error instanceof HttpError) {
     return sendJson({ message: error.message }, { status: error.status });

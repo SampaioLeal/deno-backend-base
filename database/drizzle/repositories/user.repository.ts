@@ -1,7 +1,9 @@
-import { context } from "@src/context.ts";
+import { context } from "../../../utils/context.ts";
 import { UserEntity } from "@src/1-entities/user.entity.ts";
 import { DrizzleClient } from "../drizzle.ts";
 import { users } from "../schema.ts";
+
+// TODO: integration test
 
 async function createUser(data: UserEntity) {
   const drizzle = context.get("drizzle-client") as DrizzleClient;

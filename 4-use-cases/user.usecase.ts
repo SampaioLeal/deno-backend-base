@@ -1,4 +1,4 @@
-import { context } from "@src/context.ts";
+import { context } from "../utils/context.ts";
 import { UserEntity } from "../1-entities/user.entity.ts";
 import { UserRepository } from "../3-repositories/user.repository.ts";
 

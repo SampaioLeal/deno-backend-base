@@ -1,5 +1,5 @@
 import { assertEquals, assertExists } from "@std/assert";
-import { context } from "@src/context.ts";
+import { context } from "../../utils/context.ts";
 import { initializeMainContext } from "../../contexts/main.context.ts";
 import { UserEntity } from "../../1-entities/user.entity.ts";
 import { createTestServer } from "../create-test-server.ts";

@@ -4,7 +4,9 @@
     "specifiers": {
       "jsr:@hono/hono@^4.5.9": "jsr:@hono/hono@4.5.9",
       "jsr:@std/assert@1.0.3": "jsr:@std/assert@1.0.3",
+      "jsr:@std/assert@^1.0.3": "jsr:@std/assert@1.0.3",
       "jsr:@std/internal@^1.0.2": "jsr:@std/internal@1.0.2",
+      "jsr:@std/testing@1.0.1": "jsr:@std/testing@1.0.1",
       "npm:@types/node": "npm:@types/node@18.16.19",
       "npm:drizzle-kit@0.24.2": "npm:drizzle-kit@0.24.2_esbuild@0.19.12",
       "npm:drizzle-orm@0.33.0": "npm:drizzle-orm@0.33.0_postgres@3.4.4",
@@ -23,6 +25,12 @@
       },
       "@std/internal@1.0.2": {
         "integrity": "f4cabe2021352e8bfc24e6569700df87bf070914fc38d4b23eddd20108ac4495"
+      },
+      "@std/testing@1.0.1": {
+        "integrity": "9c25841137ee818933e1722091bb9ed5fdc251c35e84c97979a52196bdb6c5c3",
+        "dependencies": [
+          "jsr:@std/assert@^1.0.3"
+        ]
       }
     },
     "npm": {
@@ -365,6 +373,7 @@
     "dependencies": [
       "jsr:@hono/hono@^4.5.9",
       "jsr:@std/assert@1.0.3",
+      "jsr:@std/testing@1.0.1",
       "npm:drizzle-kit@0.24.2",
       "npm:drizzle-orm@0.33.0",
       "npm:postgres@3.4.4"
