@@ -11,5 +11,5 @@ export const UserSchema = z.object(
   },
   {
     description: "UserSchema",
-  }
+  },
 ) satisfies z.ZodType<UserEntity>;

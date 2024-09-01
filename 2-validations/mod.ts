@@ -17,7 +17,7 @@ export function validateZodSchema(body: object, schema: z.ZodSchema) {
         error.errors.map((error) => ({
           message: error.message,
           path: error.path.join("."),
-        }))
+        })),
       );
     }
 

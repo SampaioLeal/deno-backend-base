@@ -1,12 +1,12 @@
 import { assertEquals, assertExists } from "@std/assert";
 import { context } from "../../utils/context.ts";
-import { initializeMainContext } from "../../contexts/main.context.ts";
+import { initializeE2EContext } from "../../contexts/e2e.context.ts";
 import { UserEntity } from "../../1-entities/user.entity.ts";
 import { createTestServer } from "../create-test-server.ts";
-import { DrizzleClient } from "../../database/drizzle/drizzle.ts";
+import { DrizzleTestClient } from "../create-test-database.ts";
 
 const testServer = createTestServer();
-initializeMainContext(context);
+await initializeE2EContext(context);
 
 // TODO: reuse generic e2e tests
 Deno.test("Users E2E", async (t) => {
@@ -60,7 +60,7 @@ Deno.test("Users E2E", async (t) => {
           },
         ],
       });
-    }
+    },
   );
 
   await t.step("should return error 400 when using invalid email", async () => {
@@ -116,7 +116,7 @@ Deno.test("Users E2E", async (t) => {
 
       assertEquals(response.status, 400);
       assertEquals(responseBody, { message: "Bad Request" });
-    }
+    },
   );
 
   await t.step(
@@ -133,7 +133,7 @@ Deno.test("Users E2E", async (t) => {
 
       assertEquals(response.status, 400);
       assertEquals(responseBody, { message: "Bad Request" });
-    }
+    },
   );
 
   await t.step("should return error 400 when using weak password", async () => {
@@ -153,6 +153,6 @@ Deno.test("Users E2E", async (t) => {
     assertEquals(responseBody, { message: "Bad Request" });
   });
 
-  const databaseClient = context.get("drizzle-client") as DrizzleClient;
-  await databaseClient.client.end({ timeout: 5 });
+  const databaseClient = context.get("drizzle-client") as DrizzleTestClient;
+  await databaseClient.client.close();
 });

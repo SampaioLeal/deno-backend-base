@@ -20,18 +20,22 @@ Deno.test("Users Unit - createUser usecase", async (t) => {
     "should throw error when repository does not exist",
     async () => {
       const error = await assertRejects(
-        async () => await createUser(validData)
+        async () => await createUser(validData),
       );
 
       assertInstanceOf(error, Error);
       assertEquals(error.message, "Identifier user-repository not bound");
-    }
+    },
   );
 
   initializeUnitTestsContext(context);
 
   await t.step("should create a user with valid data", async () => {
-    using userRepositoryStub = stub(GenericTestRepository, "create", GenericTestRepository.create);
+    using userRepositoryStub = stub(
+      GenericTestRepository,
+      "create",
+      GenericTestRepository.create,
+    );
     const createdUser = await createUser(validData);
 
     assertSpyCalls(userRepositoryStub, 1);
@@ -44,16 +48,20 @@ Deno.test("Users Unit - createUser usecase", async (t) => {
   });
 
   await t.step("should throw an error when user data is invalid", async () => {
-    using userRepositoryStub = stub(GenericTestRepository, "create", () => ({} as UserEntity));
+    using userRepositoryStub = stub(
+      GenericTestRepository,
+      "create",
+      () => ({} as UserEntity),
+    );
     const error = await assertRejects(
-      async () => await createUser({
-        ...validData,
-        firstName: null,
-      } as unknown as UserEntity)
+      async () =>
+        await createUser({
+          ...validData,
+          firstName: null,
+        } as unknown as UserEntity),
     );
 
     assertSpyCalls(userRepositoryStub, 0);
     assertInstanceOf(error, ValidationError);
   });
-
 });

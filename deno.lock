@@ -7,10 +7,9 @@
       "jsr:@std/assert@^1.0.3": "jsr:@std/assert@1.0.3",
       "jsr:@std/internal@^1.0.2": "jsr:@std/internal@1.0.2",
       "jsr:@std/testing@1.0.1": "jsr:@std/testing@1.0.1",
-      "npm:@types/node": "npm:@types/node@18.16.19",
+      "npm:@electric-sql/pglite@0.2.4": "npm:@electric-sql/pglite@0.2.4",
       "npm:drizzle-kit@0.24.2": "npm:drizzle-kit@0.24.2_esbuild@0.19.12",
-      "npm:drizzle-orm@0.33.0": "npm:drizzle-orm@0.33.0_postgres@3.4.4",
-      "npm:postgres": "npm:postgres@3.4.4",
+      "npm:drizzle-orm@0.33.0": "npm:drizzle-orm@0.33.0_@electric-sql+pglite@0.2.4_postgres@3.4.4",
       "npm:postgres@3.4.4": "npm:postgres@3.4.4"
     },
     "jsr": {
@@ -36,6 +35,10 @@
     "npm": {
       "@drizzle-team/brocli@0.10.1": {
         "integrity": "sha512-AHy0vjc+n/4w/8Mif+w86qpppHuF3AyXbcWW+R/W7GNA3F5/p2nuhlkCJaTXSLZheB4l1rtHzOfr9A7NwoR/Zg==",
+        "dependencies": {}
+      },
+      "@electric-sql/pglite@0.2.4": {
+        "integrity": "sha512-NN1ATH9aYTCD4257wZH1CjAKdro8jDd5r/BumxZtEVTDNDztBmPYYtBd4TEIHWdi0+QuM7SWk2JRCLvAYCSEWg==",
         "dependencies": {}
       },
       "@esbuild-kit/core-utils@3.3.2": {
@@ -232,10 +235,6 @@
         "integrity": "sha512-T1QyPSDCyMXaO3pzBkF96E8xMkiRYbUEZADd29SyPGabqxMViNoii+NcK7eWJAEoU6RZyEm5lVSIjTmcdoB9HA==",
         "dependencies": {}
       },
-      "@types/node@18.16.19": {
-        "integrity": "sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==",
-        "dependencies": {}
-      },
       "buffer-from@1.1.2": {
         "integrity": "sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==",
         "dependencies": {}
@@ -255,9 +254,10 @@
           "esbuild-register": "esbuild-register@3.6.0_esbuild@0.19.12"
         }
       },
-      "drizzle-orm@0.33.0_postgres@3.4.4": {
+      "drizzle-orm@0.33.0_@electric-sql+pglite@0.2.4_postgres@3.4.4": {
         "integrity": "sha512-SHy72R2Rdkz0LEq0PSG/IdvnT3nGiWuRk+2tXZQ90GVq/XQhpCzu/EFT3V2rox+w8MlkBQxifF8pCStNYnERfA==",
         "dependencies": {
+          "@electric-sql/pglite": "@electric-sql/pglite@0.2.4",
           "postgres": "postgres@3.4.4"
         }
       },
@@ -374,6 +374,7 @@
       "jsr:@hono/hono@^4.5.9",
       "jsr:@std/assert@1.0.3",
       "jsr:@std/testing@1.0.1",
+      "npm:@electric-sql/pglite@0.2.4",
       "npm:drizzle-kit@0.24.2",
       "npm:drizzle-orm@0.33.0",
       "npm:postgres@3.4.4"
