@@ -1,5 +1,5 @@
 {
-  "id": "459a087e-aeca-435b-9704-fa325b66bbd7",
+  "id": "1840ebef-7afb-4ab2-aaaa-6eab46b1600e",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -12,7 +12,8 @@
           "name": "id",
           "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "first_name": {
           "name": "first_name",

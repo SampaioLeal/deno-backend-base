@@ -1,6 +1,6 @@
-import { context } from "./context.ts";
-import { initializeMainContext } from "./contexts/main.context.ts";
-import { initializeHTTPServer } from "./http/server.ts";
+import { context } from "@src/context.ts";
+import { initializeMainContext } from "@src/contexts/main.context.ts";
+import { initializeHTTPServer } from "@src/5-http/server.ts";
 
 initializeMainContext(context);
 initializeHTTPServer();

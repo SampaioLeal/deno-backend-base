@@ -1,8 +1,9 @@
-import { context } from "../../context.ts";
+import { assertEquals, assertExists } from "@std/assert";
+import { context } from "@src/context.ts";
 import { initializeMainContext } from "../../contexts/main.context.ts";
-import { UserEntity } from "../../entities/user.entity.ts";
+import { UserEntity } from "../../1-entities/user.entity.ts";
 import { createTestServer } from "../create-test-server.ts";
-import { assertEquals } from "@std/assert";
+import { DrizzleClient } from "../../database/drizzle/drizzle.ts";
 
 const testServer = createTestServer();
 initializeMainContext(context);
@@ -37,7 +38,7 @@ Deno.test("Users E2E", async (t) => {
       assertEquals(responseBody, {
         message: "Bad Request",
       });
-    }
+    },
   );
 
   const userMock = {
@@ -59,8 +60,12 @@ Deno.test("Users E2E", async (t) => {
     const responseBody = await response.json();
 
     assertEquals(response.status, 200);
+    assertExists(responseBody.id);
     assertEquals(responseBody.password, undefined);
-    assertEquals(responseBody, { ...userMock });
+    assertEquals(responseBody.email, userMock.email);
+    assertEquals(responseBody.firstName, userMock.firstName);
+    assertEquals(responseBody.lastName, userMock.lastName);
+    assertEquals(responseBody.identifier, userMock.identifier);
   });
 
   await t.step(
@@ -77,7 +82,7 @@ Deno.test("Users E2E", async (t) => {
 
       assertEquals(response.status, 400);
       assertEquals(responseBody, { message: "Bad Request" });
-    }
+    },
   );
 
   await t.step(
@@ -94,6 +99,9 @@ Deno.test("Users E2E", async (t) => {
 
       assertEquals(response.status, 400);
       assertEquals(responseBody, { message: "Bad Request" });
-    }
+    },
   );
+
+  const databaseClient = context.get("drizzle-client") as DrizzleClient;
+  await databaseClient.client.end({ timeout: 5 });
 });

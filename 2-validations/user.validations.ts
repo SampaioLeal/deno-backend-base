@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { UserEntity } from "../entities/user.entity.ts";
+import { UserEntity } from "../1-entities/user.entity.ts";
 
 export const UserSchema = z.object({
   firstName: z.string().min(3),

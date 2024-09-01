@@ -1,3 +1,3 @@
-import { Context } from "./lib/context.ts";
+import { Context } from "@dest/context.ts";
 
 export const context = new Context();

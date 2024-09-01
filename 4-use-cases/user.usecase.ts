@@ -1,6 +1,6 @@
-import { context } from "../context.ts";
-import { UserEntity } from "../entities/user.entity.ts";
-import { UserRepository } from "../repositories/user.repository.ts";
+import { context } from "@src/context.ts";
+import { UserEntity } from "../1-entities/user.entity.ts";
+import { UserRepository } from "../3-repositories/user.repository.ts";
 
 export async function createUser(data: UserEntity) {
   const userRepository = context.get("user-repository") as UserRepository;

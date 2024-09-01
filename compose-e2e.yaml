@@ -1,18 +1,31 @@
-version: "3.7"
+version: "3.9"
 
 services:
   database:
     image: postgres:16-alpine
-    ports:
-      - 5432:5432
     environment:
-      POSTGRES_USER: deno
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: deno
       PGPORT: 5432
+    networks:
+      - tests
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready", "-d", "deno"]
-      interval: 30s
-      timeout: 60s
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 3s
       retries: 5
-      start_period: 80s
+      start_period: 5s
+      timeout: 5s
+  backend:
+    build: .
+    command: deno task test:e2e
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@database:5432/deno"
+    networks:
+      - tests
+    depends_on:
+      database:
+        condition: service_healthy
+
+networks:
+  tests:

@@ -16,7 +16,7 @@ export function initializeHTTPServer() {
       // TODO: use signal for graceful shutdown
       // TODO: use onListen for logging
     },
-    app.fetch
+    app.fetch,
   );
 
   return app;

@@ -11,7 +11,10 @@ export function createDrizzleClient() {
 
   const client = postgres(connectionString);
 
-  return drizzle(client, { schema });
+  return { client, db: drizzle(client, { schema }) };
 }
 
-export type DrizzleClient = PostgresJsDatabase<typeof schema>;
+export type DrizzleClient = {
+  client: postgres.Sql<Record<string, unknown>>;
+  db: PostgresJsDatabase<typeof schema>;
+};

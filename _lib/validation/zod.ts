@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { HttpError } from "../../http/error.ts";
+import { HttpError } from "../http/errors.ts";
 
 export function validateZodSchema(body: object, schema: z.ZodSchema) {
   try {

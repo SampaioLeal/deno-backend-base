@@ -1,8 +1,8 @@
-import { UserSchema } from "../../validations/user.validations.ts";
-import { validateZodSchema } from "../../lib/validation/zod.ts";
-import { sendJson } from "../../lib/http/responses.ts";
-import { createUser } from "../../use-cases/user.usecase.ts";
-import { HttpError } from "../error.ts";
+import { sendJson } from "@dest/http/responses.ts";
+import { HttpError } from "@dest/http/errors.ts";
+import { validateZodSchema } from "@dest/validation/zod.ts";
+import { UserSchema } from "../../2-validations/user.validations.ts";
+import { createUser } from "../../4-use-cases/user.usecase.ts";
 
 export async function createUserController(req: Request): Promise<Response> {
   if (req.headers.get("Content-Type") !== "application/json") {
