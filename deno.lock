@@ -2,10 +2,21 @@
   "version": "3",
   "packages": {
     "specifiers": {
-      "jsr:@hono/hono@^4.5.9": "jsr:@hono/hono@4.5.9",
+      "jsr:@denosaurs/plug@^1.0.6": "jsr:@denosaurs/plug@1.0.6",
+      "jsr:@felix/argon2@^1.0.7": "jsr:@felix/argon2@1.0.7",
+      "jsr:@hono/hono@^4.5.9": "jsr:@hono/hono@4.6.1",
       "jsr:@std/assert@1.0.3": "jsr:@std/assert@1.0.3",
+      "jsr:@std/assert@^0.221.0": "jsr:@std/assert@0.221.0",
       "jsr:@std/assert@^1.0.3": "jsr:@std/assert@1.0.3",
-      "jsr:@std/internal@^1.0.2": "jsr:@std/internal@1.0.2",
+      "jsr:@std/data-structures@^1.0.2": "jsr:@std/data-structures@1.0.3",
+      "jsr:@std/encoding@^0.221.0": "jsr:@std/encoding@0.221.0",
+      "jsr:@std/fmt@^0.221.0": "jsr:@std/fmt@0.221.0",
+      "jsr:@std/fs@^0.221.0": "jsr:@std/fs@0.221.0",
+      "jsr:@std/fs@^1.0.2": "jsr:@std/fs@1.0.3",
+      "jsr:@std/internal@^1.0.2": "jsr:@std/internal@1.0.3",
+      "jsr:@std/path@^0.221.0": "jsr:@std/path@0.221.0",
+      "jsr:@std/path@^1.0.3": "jsr:@std/path@1.0.6",
+      "jsr:@std/path@^1.0.4": "jsr:@std/path@1.0.6",
       "jsr:@std/testing@1.0.1": "jsr:@std/testing@1.0.1",
       "npm:@electric-sql/pglite@0.2.4": "npm:@electric-sql/pglite@0.2.4",
       "npm:drizzle-kit@0.24.2": "npm:drizzle-kit@0.24.2_esbuild@0.19.12",
@@ -13,8 +24,29 @@
       "npm:postgres@3.4.4": "npm:postgres@3.4.4"
     },
     "jsr": {
+      "@denosaurs/plug@1.0.6": {
+        "integrity": "6cf5b9daba7799837b9ffbe89f3450510f588fafef8115ddab1ff0be9cb7c1a7",
+        "dependencies": [
+          "jsr:@std/encoding@^0.221.0",
+          "jsr:@std/fmt@^0.221.0",
+          "jsr:@std/fs@^0.221.0",
+          "jsr:@std/path@^0.221.0"
+        ]
+      },
+      "@felix/argon2@1.0.7": {
+        "integrity": "b491a1cb023de4abd5e5d489df7c0f759ba0b2bf7f5bc5b9dd85c4995bd836bb",
+        "dependencies": [
+          "jsr:@denosaurs/plug@^1.0.6"
+        ]
+      },
       "@hono/hono@4.5.9": {
         "integrity": "47f561e67aedbd6d1e21e3a1ae26c1b80ffdb62a51c161d502e75bee17ca40af"
+      },
+      "@hono/hono@4.6.1": {
+        "integrity": "993704e3a2fa8e965c2fa46c57fc038bd277e781a982d3bf0fb278f6671b195f"
+      },
+      "@std/assert@0.221.0": {
+        "integrity": "a5f1aa6e7909dbea271754fd4ab3f4e687aeff4873b4cef9a320af813adb489a"
       },
       "@std/assert@1.0.3": {
         "integrity": "b0d03ce1ced880df67132eea140623010d415848df66f6aa5df76507ca7c26d8",
@@ -22,13 +54,51 @@
           "jsr:@std/internal@^1.0.2"
         ]
       },
+      "@std/data-structures@1.0.3": {
+        "integrity": "b14b8ad2333f7f595ad736ed6a0953a7f58a58b5c9fa4343dff3b2eb754a7c85"
+      },
+      "@std/encoding@0.221.0": {
+        "integrity": "d1dd76ef0dc5d14088411e6dc1dede53bf8308c95d1537df1214c97137208e45"
+      },
+      "@std/fmt@0.221.0": {
+        "integrity": "379fed69bdd9731110f26b9085aeb740606b20428ce6af31ef6bd45ef8efa62a"
+      },
+      "@std/fs@0.221.0": {
+        "integrity": "028044450299de8ed5a716ade4e6d524399f035513b85913794f4e81f07da286",
+        "dependencies": [
+          "jsr:@std/assert@^0.221.0",
+          "jsr:@std/path@^0.221.0"
+        ]
+      },
+      "@std/fs@1.0.3": {
+        "integrity": "3cb839b1360b0a42d8b367c3093bfe4071798e6694fa44cf1963e04a8edba4fe",
+        "dependencies": [
+          "jsr:@std/path@^1.0.4"
+        ]
+      },
       "@std/internal@1.0.2": {
         "integrity": "f4cabe2021352e8bfc24e6569700df87bf070914fc38d4b23eddd20108ac4495"
+      },
+      "@std/internal@1.0.3": {
+        "integrity": "208e9b94a3d5649bd880e9ca38b885ab7651ab5b5303a56ed25de4755fb7b11e"
+      },
+      "@std/path@0.221.0": {
+        "integrity": "0a36f6b17314ef653a3a1649740cc8db51b25a133ecfe838f20b79a56ebe0095",
+        "dependencies": [
+          "jsr:@std/assert@^0.221.0"
+        ]
+      },
+      "@std/path@1.0.6": {
+        "integrity": "ab2c55f902b380cf28e0eec501b4906e4c1960d13f00e11cfbcd21de15f18fed"
       },
       "@std/testing@1.0.1": {
         "integrity": "9c25841137ee818933e1722091bb9ed5fdc251c35e84c97979a52196bdb6c5c3",
         "dependencies": [
-          "jsr:@std/assert@^1.0.3"
+          "jsr:@std/assert@^1.0.3",
+          "jsr:@std/data-structures@^1.0.2",
+          "jsr:@std/fs@^1.0.2",
+          "jsr:@std/internal@^1.0.2",
+          "jsr:@std/path@^1.0.3"
         ]
       }
     },
@@ -371,6 +441,7 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@felix/argon2@^1.0.7",
       "jsr:@hono/hono@^4.5.9",
       "jsr:@std/assert@1.0.3",
       "jsr:@std/testing@1.0.1",

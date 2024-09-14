@@ -1,25 +1,30 @@
 {
   "imports": {
     "@dest/": "./_lib/",
-    "@utils/": "./utils/",
-    "hono": "jsr:@hono/hono@^4.5.9",
-    "zod": "https://deno.land/x/zod@v3.23.8/mod.ts",
+    "@electric-sql/pglite": "npm:@electric-sql/pglite@0.2.4",
+    "@felix/argon2": "jsr:@felix/argon2@^1.0.7",
     "@std/assert": "jsr:@std/assert@1.0.3",
     "@std/testing": "jsr:@std/testing@1.0.1",
-    "@electric-sql/pglite": "npm:@electric-sql/pglite@0.2.4",
-    "postgres": "npm:postgres@3.4.4",
+    "@utils/": "./utils/",
+    "drizzle-kit": "npm:drizzle-kit@0.24.2",
     "drizzle-orm": "npm:drizzle-orm@0.33.0",
-    "drizzle-kit": "npm:drizzle-kit@0.24.2"
+    "hono": "jsr:@hono/hono@^4.5.9",
+    "postgres": "npm:postgres@3.4.4",
+    "zod": "https://deno.land/x/zod@v3.23.8/mod.ts"
   },
   "tasks": {
     "start": "deno run -A main.ts",
-    "test:unit": "deno test -A ./__tests__/unit",
-    "test:e2e": "deno test -A --fail-fast ./__tests__/e2e",
+    "test:unit": "deno test -A --ignore=__tests__ ./",
+    "test:e2e": "deno test -A --fail-fast --unstable-ffi ./__tests__/e2e",
     "db:migrate": "drizzle-kit migrate --config=./database/drizzle/drizzle.config.ts",
     "db:generate": "drizzle-kit generate --config=./database/drizzle/drizzle.config.ts"
   },
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": true
   },
   "nodeModulesDir": true
 }

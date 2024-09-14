@@ -1,20 +1,18 @@
-interface ClassConstructor {
-  new (...args: unknown[]): unknown;
+interface ClassConstructor<T = unknown> {
+  new (...args: unknown[]): T;
 }
 
 export class Context {
   private bindings = new Map<string, unknown>();
 
-  constructor() {}
-
-  bind(identifier: string, value: unknown) {
+  bind<T>(identifier: string, value: T): void {
     this.bindings.set(identifier, value);
   }
 
-  get(identifier: string) {
+  get<T>(identifier: string): T {
     const value = this.bindings.get(identifier);
 
-    if (value === undefined || value === null) {
+    if (value === undefined) {
       throw new Error(`Identifier ${identifier} not bound`);
     }
 
@@ -24,9 +22,9 @@ export class Context {
 
       this.bind(identifier, instantiatedClass);
 
-      return instantiatedClass;
+      return instantiatedClass as T;
     } catch (_) {
-      return value;
+      return value as T;
     }
   }
 }

@@ -4,7 +4,6 @@ import * as schema from "./schema.ts";
 
 export function createDrizzleClient() {
   const connectionString = Deno.env.get("DATABASE_URL");
-
   if (!connectionString) {
     throw new Error("Database URL is not defined");
   }

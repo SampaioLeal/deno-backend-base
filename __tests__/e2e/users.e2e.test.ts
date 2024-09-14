@@ -10,24 +10,20 @@ await initializeE2EContext(context);
 
 // TODO: reuse generic e2e tests
 Deno.test("Users E2E", async (t) => {
-  const userMock = {
+  const userMock: UserEntity = {
     email: "test@test.com",
     firstName: "Testerson",
     lastName: "Testhonson",
     identifier: "123",
     password: "testing123#",
-  } as UserEntity;
+  };
 
   await t.step("should return error 400 when no body is passed", async () => {
-    const response = await testServer.request("/user", {
-      method: "POST",
-    });
+    const response = await testServer.request("/user", { method: "POST" });
     const responseBody = await response.json();
 
     assertEquals(response.status, 400);
-    assertEquals(responseBody, {
-      message: "Invalid body",
-    });
+    assertEquals(responseBody, { message: "Invalid body" });
   });
 
   await t.step(
@@ -35,9 +31,7 @@ Deno.test("Users E2E", async (t) => {
     async () => {
       const response = await testServer.request("/user", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...userMock,
           identifier: undefined,
@@ -50,29 +44,18 @@ Deno.test("Users E2E", async (t) => {
       assertEquals(responseBody, {
         message: "Validation Error",
         cause: [
-          {
-            path: "email",
-            message: "Expected string, received null",
-          },
-          {
-            path: "identifier",
-            message: "Required",
-          },
+          { path: "email", message: "Expected string, received null" },
+          { path: "identifier", message: "Required" },
         ],
       });
-    },
+    }
   );
 
   await t.step("should return error 400 when using invalid email", async () => {
     const response = await testServer.request("/user", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...userMock,
-        email: "invalid_email.com",
-      }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...userMock, email: "invalid_email.com" }),
     });
     const responseBody = await response.json();
 
@@ -83,12 +66,22 @@ Deno.test("Users E2E", async (t) => {
     });
   });
 
+  await t.step("should return error 400 when using weak password", async () => {
+    const response = await testServer.request("/user", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...userMock, password: "Weakpassw0rd!" }),
+    });
+    const responseBody = await response.json();
+
+    assertEquals(response.status, 400);
+    assertEquals(responseBody, { message: "Weak Password" });
+  });
+
   await t.step("should return user info when everything is ok", async () => {
     const response = await testServer.request("/user", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userMock),
     });
     const responseBody = await response.json();
@@ -103,55 +96,34 @@ Deno.test("Users E2E", async (t) => {
   });
 
   await t.step(
-    "should return error 400 when using existant email",
+    "should return error 400 when using existing email",
     async () => {
       const response = await testServer.request("/user", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userMock),
       });
       const responseBody = await response.json();
 
       assertEquals(response.status, 400);
       assertEquals(responseBody, { message: "Bad Request" });
-    },
+    }
   );
 
   await t.step(
-    "should return error 400 when using existant identifier",
+    "should return error 400 when using existing identifier",
     async () => {
       const response = await testServer.request("/user", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...userMock, email: "another@test.com" }),
       });
       const responseBody = await response.json();
 
       assertEquals(response.status, 400);
       assertEquals(responseBody, { message: "Bad Request" });
-    },
+    }
   );
-
-  await t.step("should return error 400 when using weak password", async () => {
-    const response = await testServer.request("/user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...userMock,
-        password: "weakpassword",
-      }),
-    });
-    const responseBody = await response.json();
-
-    assertEquals(response.status, 400);
-    assertEquals(responseBody, { message: "Bad Request" });
-  });
 
   const databaseClient = context.get("drizzle-client") as DrizzleTestClient;
   await databaseClient.client.close();
